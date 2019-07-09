@@ -5,6 +5,8 @@ from flask import Flask, request, redirect, url_for, render_template, send_from_
 import datetime
 from bs4 import BeautifulSoup
 
+UPLOAD_FOLDER = os.path.dirname(os.path.abspath(__file__)) + '/uploads/'
+DOWNLOAD_FOLDER = os.path.dirname(os.path.abspath(__file__)) + '/downloads/'
 ALLOWED_EXTENSIONS = {'pdf', 'HTML', 'html'}
 
 def allowed_file(filename):
