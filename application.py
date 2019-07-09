@@ -1,9 +1,9 @@
 import os
 import sys
 from werkzeug.utils import secure_filename
-from flask import Flask, request, redirect, url_for, render_template, send_from_directory
+from flask import Flask, request, redirect, url_for, render_template, send_from_directory, flash
 import datetime
-import bs4
+from bs4 import BeautifulSoup
 
 ALLOWED_EXTENSIONS = {'pdf', 'HTML', 'html'}
 
@@ -13,6 +13,17 @@ def allowed_file(filename):
 
 
 app = Flask(__name__)
+
+
+def process_file(path, filename):
+    page = open(path).read()
+    soup = BeautifulSoup(page, 'lxml')
+    rows = soup.find_all('tr')
+    row_td = rows[0].find_all('td')
+    header=['']*len(row_td)
+    for x in range( len(row_td)-1):
+        header[x] = BeautifulSoup(str(row_td[x]), "lxml").get_text()
+    return render_template('index2.html',header=header,row_td=row_td)
 
 
 
