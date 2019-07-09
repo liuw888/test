@@ -1,11 +1,19 @@
-import os, sys
+import os
+import sys
+from werkzeug.utils import secure_filename
 from flask import Flask, request, redirect, url_for, render_template, send_from_directory
 import datetime
 
+ALLOWED_EXTENSIONS = {'pdf', 'HTML', 'html'}
 
+def allowed_file(filename):
+    # check if the file is a html or pdf file
+    return '.' in filename and filename.rsplit('.', 1)[1].lower() in ALLOWED_EXTENSIONS
 
 
 app = Flask(__name__)
+
+
 
 @app.route('/', methods=['GET', 'POST'])
 def index():
@@ -27,9 +35,11 @@ def index():
     print('App works', file=sys.stderr)
     return render_template('index.html')
 
+
 @app.route("/hi")
 def hi():
     return "Hi World!"
+
 
 if __name__ == "__main__":
     app.run(debug=True)
