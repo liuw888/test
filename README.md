@@ -1,17 +1,10 @@
----
-topic: Python Flask sample for Azure App Service (Linux)
-languages:
-  - python
-products:
-  - Azure App Service
-  - Azure Web Apps
----
+# Python Flask app on Azure App Service Web
 
-# Python Flask sample for Azure App Service (Linux)
+This is a minimal sample app that demonstrates how to run a Python Flask application on Azure App Service Web.
 
-This is a minimal sample app that demonstrates how to run a Python Flask application on Azure App Service on Linux.
+This repository can directly be deployed to Azure App Service.
 
-For more information, please see the [Python on App Service quickstart](https://docs.microsoft.com/en-us/azure/app-service/containers/quickstart-python).
+For more information, please see the [Python on App Service Quickstart docs](https://docs.microsoft.com/en-us/azure/app-service-web/app-service-web-get-started-python).
 
 # Contributing
 
