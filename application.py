@@ -1,6 +1,5 @@
 import os, sys
 from flask import Flask, request, redirect, url_for, render_template, send_from_directory
-import bs4
 import datetime
 
 
