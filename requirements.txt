@@ -12,3 +12,4 @@ MarkupSafe==1.0
 Werkzeug==0.14.1
 bs4==0.0.1
 graphviz==0.11.1
+pybase64==1.0.0
