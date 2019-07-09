@@ -9,12 +9,18 @@ UPLOAD_FOLDER = os.path.dirname(os.path.abspath(__file__)) + '/uploads/'
 DOWNLOAD_FOLDER = os.path.dirname(os.path.abspath(__file__)) + '/downloads/'
 ALLOWED_EXTENSIONS = {'pdf', 'HTML', 'html'}
 
+
+app = Flask(__name__, static_url_path="/static")
+DIR_PATH = os.path.dirname(os.path.realpath(__file__))
+app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
+app.config['DOWNLOAD_FOLDER'] = DOWNLOAD_FOLDER
+
 def allowed_file(filename):
     # check if the file is a html or pdf file
     return '.' in filename and filename.rsplit('.', 1)[1].lower() in ALLOWED_EXTENSIONS
 
 
-app = Flask(__name__)
+
 
 
 def process_file(path, filename):
