@@ -20,9 +20,6 @@ def allowed_file(filename):
     return '.' in filename and filename.rsplit('.', 1)[1].lower() in ALLOWED_EXTENSIONS
 
 
-
-
-
 def process_file(path, filename):
     page = open(path).read()
     soup = BeautifulSoup(page, 'lxml')
@@ -60,6 +57,9 @@ def index():
 def hi():
     return "Hi World!"
 
+@app.route('/uploads/<filename>')
+def uploaded_file(filename):
+    return send_from_directory(app.config['DOWNLOAD_FOLDER'], filename, as_attachment=True)
 
 if __name__ == "__main__":
     app.run(debug=True)
