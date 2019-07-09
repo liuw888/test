@@ -3,6 +3,7 @@ import sys
 from werkzeug.utils import secure_filename
 from flask import Flask, request, redirect, url_for, render_template, send_from_directory
 import datetime
+import bs4
 
 ALLOWED_EXTENSIONS = {'pdf', 'HTML', 'html'}
 
