@@ -17,13 +17,8 @@ app = Flask(__name__, static_url_path="/static")
 @app.route('/', methods=['GET', 'POST'])
 def index():
     print('app works')
-    chart_data = Digraph()
-    chart_data.node('H', 'Hello')
-    chart_data.node('W', 'World')
-    chart_data.edge('H', 'W')
-    chart_output = chart_data.pipe(format='png')
-    chart_output = pybase64.b64encode(chart_output).decode('utf-8')
-    return render_template('index.html',chart_output=chart_output)
+    
+    return render_template('index.html')
 
 
 @app.route("/hi")

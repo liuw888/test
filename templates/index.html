@@ -1,19 +1,35 @@
-<!doctype html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>CMT_SR_VIZ</title>
-</head>
-<body>
-<div align="center">
-    <h1>CMT Summary Report Visulization</h1>
-    <h2>Upload your html file</h2>
-    <form method=post enctype=multipart/form-data>
-        <p><input type=file name=file>
-            <input type=submit value=Transfer>
-        </p>
-    </form>
-</div>
-<img src="data:image/png;base64,{{chart_output|safe}}" />
-</body>
+<html>
+  <head>
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <script type="text/javascript">
+      google.charts.load('current', {packages:["orgchart"]});
+      google.charts.setOnLoadCallback(drawChart);
+
+      function drawChart() {
+        var data = new google.visualization.DataTable();
+        data.addColumn('string', 'Name');
+        data.addColumn('string', 'Manager');
+        data.addColumn('string', 'ToolTip');
+
+        // For each orgchart box, provide the name, manager, and tooltip to show.
+        data.addRows([
+          [{v:'Mike', f:'Mike<div style="color:red; font-style:italic">President</div>'},
+           '', 'The President'],
+          [{v:'Jim', f:'Jim<div style="color:red; font-style:italic">Vice President</div>'},
+           'Mike', 'VP'],
+          ['Alice', 'Mike', ''],
+          ['Bob', 'Jim', 'Bob Sponge'],
+          ['Carol', 'Bob', '']
+        ]);
+
+        // Create the chart.
+        var chart = new google.visualization.OrgChart(document.getElementById('chart_div'));
+        // Draw the chart, setting the allowHtml option to true for the tooltips.
+        chart.draw(data, {allowHtml:true});
+      }
+   </script>
+    </head>
+  <body>
+    <div id="chart_div"></div>
+  </body>
 </html>
