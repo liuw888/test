@@ -12,13 +12,7 @@ import pybase64
 def index():
     print('app works')
   
-    chart_data = Digraph()
-    chart_data.node('H', 'Hello')
-    chart_data.node('W', 'World')
-    chart_data.edge('H', 'W')
-    chart_output = chart_data.pipe(format='png')
-    chart_output = pybase64.b64encode(chart_output).decode('utf-8')
-    return render_template('index.html',chart_output=chart_output)
+    return 'Hello World!'
 
 
 @app.route("/hi")
