@@ -4,8 +4,7 @@ from werkzeug.utils import secure_filename
 from flask import Flask, request, redirect, url_for, render_template, send_from_directory, flash
 import datetime
 from bs4 import BeautifulSoup
-from graphviz import Digraph
-import pybase64
+
 
 
 @app.route('/', methods=['GET', 'POST'])
