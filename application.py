@@ -1,4 +1,4 @@
-from flask import Flask, request, jsonify
+from flask import Flask, request, jsonify, Response
 from flask_cors import CORS, cross_origin
 from werkzeug.utils import secure_filename
 import os
@@ -6,6 +6,7 @@ import sys
 from bs4 import BeautifulSoup
 import lxml.html as lh
 import datetime
+import json
 
 UPLOAD_FOLDER = os.path.dirname(os.path.abspath(__file__)) + '/uploads/'
 
@@ -297,8 +298,9 @@ def post():
 
     #     i = i+1
 
-
-    return res;
+    js = json.dumps(res);
+    resp = Response(js, status=200, mimetype='application/json')
+    return resp;
 
 
 @app.route('/test', methods=['POST','GET'])
