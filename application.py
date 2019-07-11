@@ -48,7 +48,7 @@ def post():
     row_td = rows[0].find_all('td')
     header=['']*len(row_td)
     print(len(row_td))
-    res =  ' graph{  node [shape=plaintext]; ' 
+    res =  'digraph D {  node [shape=plaintext]; ' 
     for x in range( len(row_td)-1):
         header[x] = BeautifulSoup(str(row_td[x]), "lxml").get_text()
     print(header[:7])
