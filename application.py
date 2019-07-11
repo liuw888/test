@@ -36,7 +36,7 @@ def post():
     file = request.files.get('htmlfile', '')
     filename = secure_filename(file.filename)
     #file.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
-    return '''<h1>file is received: {}'''.format(filename)
+    #return '''<h1>file is received: {}</h1>'''.format(filename)
     #print('saved',file = sys.stderr)
     #print(filename,file = sys.stderr)
     content = file.read()
@@ -45,10 +45,8 @@ def post():
     #print('content', file=sys.stderr)
     soup = BeautifulSoup(content, 'lxml')
     rows = soup.find_all('tr')
-
+    return '''{}'''.format(rows[1])
     
-
-
     #dot language starts here!
     i = 1
     edge = []
