@@ -299,7 +299,7 @@ def post():
                         <td colspan ="3" bgcolor='%s'>Rejected</td>
                     </tr>
                     <tr>
-                        <td  rowspan = "4" ><img  src="C:\wrong.png" ></img></td>
+                        <td  rowspan = "4" >Wrong</td>
                     </tr>
                     <tr>
                         <td colspan ="2"> %s</td>
@@ -311,7 +311,7 @@ def post():
                         <td colspan="2">%s</td>
                     </tr>
 
-                </TABLE>>];''' % (bcolor, task, peopleName, dateDay)
+                </TABLE>>];  ''' % (bcolor, task, peopleName, dateDay)
             
             
 
