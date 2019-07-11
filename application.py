@@ -168,7 +168,7 @@ def post():
                             <td>%s</td>
                         </tr>
                 </TABLE>>];''' % (bcolor, task, peopleName, dateDay)
-                res += chr(j+65) +'->'+chr(j+66)+'   '
+                res = res +  chr(j+65) +'->'+chr(j+66)+'   '
 
             elif("Pending" in marker):
                 res += chr(j+65) + ''' [label=< 
