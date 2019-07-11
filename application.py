@@ -315,8 +315,8 @@ def test():
                 <input type="submit" value="Submit"><br>
               </form>'''
 
-@app.route('/havfun', methods=['POST','GET'])
-def test():
+@app.route('/havefun', methods=['POST','GET'])
+def havefun():
     if request.method == 'POST':
         language = request.form.get('language')
         return '''<h1> You jsu said{}</h1>
