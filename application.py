@@ -146,7 +146,7 @@ def post():
                         <tr>
                             <td>%s</td>
                         </tr>
-                </TABLE>>];''' % (bcolor, task, peopleName)
+                </TABLE>>];  ''' % (bcolor, task, peopleName)
                 
 
             elif(marker == "Completed"):
@@ -167,7 +167,7 @@ def post():
                         <tr>
                             <td>%s</td>
                         </tr>
-                </TABLE>>];''' % (bcolor, task, peopleName, dateDay)
+                </TABLE>>];  ''' % (bcolor, task, peopleName, dateDay)
                 res = res +  chr(j+65) +'->'+chr(j+66)+'   '
 
             elif("Pending" in marker):
@@ -188,7 +188,7 @@ def post():
                     <tr>
                         <td>Since %s</td>
                     </tr>
-                </TABLE>>];''' % (bcolor, marker, task, peopleName, dateDay)
+                </TABLE>>];  ''' % (bcolor, marker, task, peopleName, dateDay)
                 
 
             elif(marker == "Staff failure"):
@@ -212,7 +212,7 @@ def post():
                     <tr>
                         <td>For support: <u><font color="blue">http://manage-info.intranet.dow.com/Forms/DS/DS-MMD/F_DS_MMD-MSOR.asp</font></u></td>
                     </tr>
-                </TABLE>>];''' % (bcolor, marker, task, peopleName, dateDay)
+                </TABLE>>];  ''' % (bcolor, marker, task, peopleName, dateDay)
                 
 
             else:
@@ -233,7 +233,7 @@ def post():
                     <tr>
                         <td>%s</td>
                     </tr>
-                </TABLE>>];''' % (bcolor, marker, task, peopleName, dateDay)
+                </TABLE>>];  ''' % (bcolor, marker, task, peopleName, dateDay)
                 
 
             
