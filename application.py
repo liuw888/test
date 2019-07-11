@@ -4,6 +4,7 @@ from werkzeug.utils import secure_filename
 import os
 import sys
 from bs4 import BeautifulSoup
+import lxml.html as lh
 import datetime
 
 UPLOAD_FOLDER = os.path.dirname(os.path.abspath(__file__)) + '/uploads/'
