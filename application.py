@@ -1,4 +1,4 @@
-from flask import Flask, request, jsonify, Response
+from flask import Flask, request, jsonify, Response, send_file
 from flask_cors import CORS, cross_origin
 from werkzeug.utils import secure_filename
 import os
@@ -18,6 +18,14 @@ app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
 @app.route('/hi')
 def hi():
     return 'hello, world!'
+
+@app.route('/get_image')
+def get_image():
+    if request.args.get('type') == '1':
+       filename = 'https://github.com/liuw888/test/blob/master/ok.png'
+    else:
+       filename = 'https://github.com/liuw888/test/blob/master/wrong.png'
+    return send_file(filename, mimetype='image/gif')
 
 
 @app.route('/request', methods=['POST'])
