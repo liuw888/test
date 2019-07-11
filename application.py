@@ -21,10 +21,7 @@ def hi():
 
 @app.route('/get_image')
 def get_image():
-    if request.args.get('type') == '1':
-       filename = 'https://github.com/liuw888/test/blob/master/ok.png'
-    else:
-       filename = 'https://github.com/liuw888/test/blob/master/wrong.png'
+    filename = 'https://github.com/liuw888/test/blob/master/ok.png'
     return send_file(filename, mimetype='image/gif')
 
 
