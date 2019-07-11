@@ -18,19 +18,6 @@ app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
 def hi():
     return 'hello, world!'
 
-@app.route('/test', methods=['POST','GET'])
-def test():
-    if request.method == 'POST':
-        language = request.form.get('language')
-        framework = request.form['framework']
-        return '''<h1> language is:{}</h1>
-            <h1>framework is: {}</h1>'''.format(language,framework)
-
-    return '''<form method="POST">
-                Language: <input type="text" name="language"><br>
-                Framework: <input type="text" name="framework"><br>
-                <input type="submit" value="Submit"><br>
-              </form>'''
 
 @app.route('/request', methods=['POST'])
 def post():
@@ -46,6 +33,7 @@ def post():
     #print('content', file=sys.stderr)
     soup = BeautifulSoup(content, 'lxml')
     rows = soup.find_all('tr')
+    #return '''{}'''.format(rows[1])
     
     #dot language starts here!
     i = 1
@@ -311,6 +299,34 @@ def post():
 
 
     return res;
+
+
+@app.route('/test', methods=['POST','GET'])
+def test():
+    if request.method == 'POST':
+        language = request.form.get('language')
+        framework = request.form['framework']
+        return '''<h1> language is:{}</h1>
+            <h1>framework is: {}</h1>'''.format(language,framework)
+
+    return '''<form method="POST">
+                Language: <input type="text" name="language"><br>
+                Framework: <input type="text" name="framework"><br>
+                <input type="submit" value="Submit"><br>
+              </form>'''
+
+@app.route('/havfun', methods=['POST','GET'])
+def test():
+    if request.method == 'POST':
+        language = request.form.get('language')
+        return '''<h1> You jsu said{}</h1>
+            <h1>but I don't care, I would like to say I love you</h1>
+            '''.format(language)
+
+    return '''<form method="POST">
+                Say something at here: <input type="text" name="language"><br>
+                <input type="submit" value="Submit"><br>
+              </form>'''
     
 
 if __name__ == "__main__":
