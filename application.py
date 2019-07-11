@@ -17,8 +17,20 @@ app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
 def hi():
     return 'hello, world!'
 
+@app.route('/test', methods=['POST','GET'])
+def test():
+    if request.method == 'POST':
+        language = request.form.get('language')
+        framework = request.form['framework']
+        return '''<h1> language is:{}</h1>
+            <h1>framework is: {}</h1>'''.format(language,framework)
 
-
+    return '''<form method="POST">
+                Language: <input type="text" name="language"><br>
+                Framework: <input type="text" name="framework"><br>
+                <input type="submit" value="Submit"><br>
+              </form>'''
+              
 @app.route('/request', methods=['POST'])
 def post():
     file = request.files.get('htmlfile', '')
