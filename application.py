@@ -10,7 +10,7 @@ import datetime
 UPLOAD_FOLDER = os.path.dirname(os.path.abspath(__file__)) + '/uploads/'
 
 app = Flask(__name__)        
-
+#CORS(app)
 app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
 # POST - just get the image and metadata
 @app.route('/request', methods=['POST'])
@@ -296,8 +296,6 @@ def post():
     return res;
     
 
-@app.route('/')
+@app.route('/hi')
 def hi():
     return 'hello, world!'
-
-app.run(port=5000)
