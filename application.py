@@ -1,5 +1,5 @@
 from flask import Flask, request, jsonify
-#from flask_cors import CORS, cross_origin
+from flask_cors import CORS, cross_origin
 from werkzeug.utils import secure_filename
 import os
 import sys
@@ -10,7 +10,7 @@ import datetime
 UPLOAD_FOLDER = os.path.dirname(os.path.abspath(__file__)) + '/uploads/'
 
 app = Flask(__name__)        
-#CORS(app)
+CORS(app)
 app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
 # POST - just get the image and metadata
 
