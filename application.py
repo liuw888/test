@@ -155,7 +155,7 @@ def post():
                 res += chr(j+65) + ''' [label=< 
                 <TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0" CELLPADDING="4">
                         <tr >
-                            <td colspan ="4" bgcolor='%s'>Completed</td>
+                            <td colspan ="4" bgcolor='%s'><img src=https://github.com/liuw888/test/blob/master/ok.png></img></td>
                         </tr>
                         <tr>
                             <td rowspan ="4" colspan ="3" >Yes</td>
