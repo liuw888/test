@@ -46,7 +46,6 @@ def post():
     #print('content', file=sys.stderr)
     soup = BeautifulSoup(content, 'lxml')
     rows = soup.find_all('tr')
-    return '''{}'''.format(rows[1])
     
     #dot language starts here!
     i = 1
