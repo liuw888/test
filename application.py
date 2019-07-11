@@ -68,10 +68,10 @@ def post():
 
             order = 'sturct'+str(j)
             if(j > 1 and (status=="Released" or status=="Released- Waiting")):
-                preorder = 'sturct'+str(preindex+1)
+                res = res +  chr(last) +'->'+chr(j+65)+'[color="white"]   '
             elif(j > 1):
-                preorder = 'sturct'+str(j-1)
-                preindex = j-1
+                res = res +  chr(j+64) +'->'+chr(j+65)+'   '
+                
 
             time_cell = str(row_td[7])
             time = BeautifulSoup(time_cell, "lxml").get_text()
@@ -148,7 +148,7 @@ def post():
                             <td>%s</td>
                         </tr>
                 </TABLE>>];  ''' % (bcolor, task, peopleName)
-                res = res +  chr(last) +'->'+chr(j+65)+'[color="white"]   '
+               # res = res +  chr(last) +'->'+chr(j+65)+'[color="white"]   '
                 
 
             elif(marker == "Completed"):
@@ -171,7 +171,7 @@ def post():
                         </tr>
                 </TABLE>>];  ''' % (bcolor, task, peopleName, dateDay)
                 last = j+65
-                res = res +  chr(j+65) +'->'+chr(j+66)+'   '
+                # res = res +  chr(j+65) +'->'+chr(j+66)+'   '
                 
 
             elif("Pending" in marker):
@@ -194,7 +194,7 @@ def post():
                     </tr>
                 </TABLE>>];  ''' % (bcolor, marker, task, peopleName, dateDay)
                 last = j+65
-                res = res +  chr(j+65) +'->'+chr(j+66)+'   '
+                # res = res +  chr(j+65) +'->'+chr(j+66)+'   '
                 
 
             elif(marker == "Staff failure"):
@@ -220,7 +220,7 @@ def post():
                     </tr>
                 </TABLE>>];  ''' % (bcolor, marker, task, peopleName, dateDay)
                 last = j+65
-                res = res +  chr(j+65) +'->'+chr(j+66)+'   '
+                # res = res +  chr(j+65) +'->'+chr(j+66)+'   '
                 
 
             else:
@@ -243,7 +243,7 @@ def post():
                     </tr>
                 </TABLE>>];  ''' % (bcolor, marker, task, peopleName, dateDay)
                 last = j+65
-                res = res +  chr(j+65) +'->'+chr(j+66)+'   '
+                # res = res +  chr(j+65) +'->'+chr(j+66)+'   '
                 
 
             
@@ -317,6 +317,7 @@ def post():
 
         i = i+1
     res += '}';
+
 
     js = json.dumps(res);
     resp = Response(js, status=200, mimetype='application/json')
