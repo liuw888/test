@@ -251,70 +251,71 @@ def post():
             j = j+1
         i = i+1
 
-    # # Rejected condition starts at here
-    # i = 1
-    # while(i < len(rows)-1):
-    #     row_td = rows[i].find_all('td')
-    #     str_cells = str(row_td[8])
-    #     statusText = BeautifulSoup(str_cells, "lxml").get_text()
-    #     status = str(statusText)
-    #     if(status == "Completed- Rejected"):
-    #         color = ""
-    #         order = 'sturct'+str(j)
-    #         preorder = 'sturct'+str(j-1)
+    # Rejected condition starts at here
+    i = 1
+    while(i < len(rows)-1):
+        row_td = rows[i].find_all('td')
+        str_cells = str(row_td[8])
+        statusText = BeautifulSoup(str_cells, "lxml").get_text()
+        status = str(statusText)
+        if(status == "Completed- Rejected"):
+            color = ""
+            order = 'sturct'+str(j)
+            preorder = 'sturct'+str(j-1)
 
-    #         time_cell = str(row_td[7])
-    #         time = BeautifulSoup(time_cell, "lxml").get_text()
-    #         if("." in time):
-    #             dateDay = time[:10]
-    #             dateArr = dateDay.split(".")
-    #             dateDay = dateArr[2]+"/"+dateArr[1]+"/"+dateArr[0]
-    #         elif("/" in time):
-    #             dateDay = time[:10]
-    #             dateArr = dateDay.split("/")
-    #             dateDay = dateArr[2]+"/"+dateArr[0]+"/"+dateArr[1]
-    #         else:
-    #             dateDay = time[:4]+"/"+time[4:6]+"/"+time[6:8]
+            time_cell = str(row_td[7])
+            time = BeautifulSoup(time_cell, "lxml").get_text()
+            if("." in time):
+                dateDay = time[:10]
+                dateArr = dateDay.split(".")
+                dateDay = dateArr[2]+"/"+dateArr[1]+"/"+dateArr[0]
+            elif("/" in time):
+                dateDay = time[:10]
+                dateArr = dateDay.split("/")
+                dateDay = dateArr[2]+"/"+dateArr[0]+"/"+dateArr[1]
+            else:
+                dateDay = time[:4]+"/"+time[4:6]+"/"+time[6:8]
 
-    #         d0 = datetime.date.today()
-    #         d1 = datetime.date(int(dateDay[0:4]), int(
-    #             dateDay[5:7]), int(dateDay[8:]))
-    #         delta = d0 - d1
-    #         daypass = str(delta.days)
-    #         print(daypass)
+            d0 = datetime.date.today()
+            d1 = datetime.date(int(dateDay[0:4]), int(
+                dateDay[5:7]), int(dateDay[8:]))
+            delta = d0 - d1
+            daypass = str(delta.days)
+            print(daypass)
 
-    #         task_cell = str(row_td[1])
-    #         task = BeautifulSoup(task_cell, "lxml").get_text()
-    #         task = task.replace("&", "and")
-    #         print(task)
+            task_cell = str(row_td[1])
+            task = BeautifulSoup(task_cell, "lxml").get_text()
+            task = task.replace("&", "and")
+            print(task)
 
-    #         people_name = str(row_td[2])
-    #         people = BeautifulSoup(people_name, "lxml").get_text()
-    #         peopleName = str(people)
-    #         bcolor = "#C21807"
+            people_name = str(row_td[2])
+            people = BeautifulSoup(people_name, "lxml").get_text()
+            peopleName = str(people)
+            bcolor = "#C21807"
 
-    #         dot.node(order, '''<
-    #             <TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0" CELLPADDING="4">
-    #                 <tr >
-    #                     <td colspan ="3" bgcolor='%s'>Rejected</td>
-    #                 </tr>
-    #                 <tr>
-    #                     <td  rowspan = "4" ><img  src="C:\wrong.png" ></img></td>
-    #                 </tr>
-    #                 <tr>
-    #                     <td colspan ="2"> %s</td>
-    #                 </tr>
-    #                 <tr>
-    #                     <td>%s (<u><font color="blue">mailto:@dow.com</font></u>)</td>
-    #                 </tr>
-    #                 <tr>
-    #                     <td colspan="2">%s</td>
-    #                 </tr>
+            res += chr(j+65) + '''<
+                <TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0" CELLPADDING="4">
+                    <tr >
+                        <td colspan ="3" bgcolor='%s'>Rejected</td>
+                    </tr>
+                    <tr>
+                        <td  rowspan = "4" ><img  src="C:\wrong.png" ></img></td>
+                    </tr>
+                    <tr>
+                        <td colspan ="2"> %s</td>
+                    </tr>
+                    <tr>
+                        <td>%s (<u><font color="blue">mailto:@dow.com</font></u>)</td>
+                    </tr>
+                    <tr>
+                        <td colspan="2">%s</td>
+                    </tr>
 
-    #             </TABLE>>''' % (bcolor, task, peopleName, dateDay))
-    #         dot.edge(preorder, order)
+                </TABLE>>''' % (bcolor, task, peopleName, dateDay)
+            res += chr(last) +'->'+chr(j+65) + '  '
+            
 
-    #     i = i+1
+        i = i+1
     res += '}';
 
     js = json.dumps(res);
