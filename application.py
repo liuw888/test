@@ -297,6 +297,7 @@ def post():
     #         dot.edge(preorder, order)
 
     #     i = i+1
+    res += '}';
 
     js = json.dumps(res);
     resp = Response(js, status=200, mimetype='application/json')
