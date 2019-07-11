@@ -133,7 +133,7 @@ def post():
                             <td colspan ="4" bgcolor='%s'>Waiting</td>
                         </tr>
                         <tr>
-                            <td rowspan ="3" colspan ="3" ><img  src="C:\waiting.png"></img></td>
+                            <td rowspan ="3" colspan ="3" >Waiting</td>
                         </tr>
                         <tr>
                             <td>%s</td>
@@ -152,7 +152,7 @@ def post():
                             <td colspan ="4" bgcolor='%s'>Completed</td>
                         </tr>
                         <tr>
-                            <td rowspan ="4" colspan ="3" ><img  src="C:\ok.png" ></img></td>
+                            <td rowspan ="4" colspan ="3" >Yes</td>
                         </tr>
                         <tr>
                             <td> %s</td>
@@ -172,7 +172,7 @@ def post():
                         <td colspan ="4" bgcolor='%s'>%s</td>
                     </tr>
                     <tr>
-                        <td rowspan ="4" colspan ="3" ><img  src="C:\working.png" ></img></td>
+                        <td rowspan ="4" colspan ="3" >Pending</td>
                     </tr>
                     <tr>
                         <td> %s</td>
@@ -192,7 +192,7 @@ def post():
                         <td colspan ="4" bgcolor='%s'>%s</td>
                     </tr>
                     <tr>
-                        <td rowspan ="5" colspan ="3" ><img  src="C:\staff.png" ></img></td>
+                        <td rowspan ="5" colspan ="3" >staff</td>
                     </tr>
                     <tr>
                         <td> %s</td>
@@ -215,7 +215,7 @@ def post():
                         <td colspan ="4" bgcolor='%s'>%s</td>
                     </tr>
                     <tr>
-                        <td rowspan ="4" colspan ="3" ><img  src="C:\wrong.png" ></img></td>
+                        <td rowspan ="4" colspan ="3" >No</td>
                     </tr>
                     <tr>
                         <td> %s</td>
