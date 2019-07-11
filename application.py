@@ -30,14 +30,16 @@ def test():
                 Framework: <input type="text" name="framework"><br>
                 <input type="submit" value="Submit"><br>
               </form>'''
-              
+
 @app.route('/request', methods=['POST'])
 def post():
+    
     file = request.files.get('htmlfile', '')
     filename = secure_filename(file.filename)
     #file.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
+    return '''<h1>file is received: {}'''.format(filename)
     #print('saved',file = sys.stderr)
-    print(filename,file = sys.stderr)
+    #print(filename,file = sys.stderr)
     content = file.read()
     #content= open(os.path.join(app.config['UPLOAD_FOLDER'], filename)).read()
     #print(content,file = sys.stderr)
