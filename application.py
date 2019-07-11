@@ -12,6 +12,13 @@ app = Flask(__name__)
 #CORS(app)
 app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
 # POST - just get the image and metadata
+
+@app.route('/hi')
+def hi():
+    return 'hello, world!'
+
+
+
 @app.route('/request', methods=['POST'])
 def post():
     file = request.files.get('htmlfile', '')
@@ -295,6 +302,5 @@ def post():
     return res;
     
 
-@app.route('/hi')
-def hi():
-    return 'hello, world!'
+if __name__ == "__main__":
+    app.run(debug=True)
