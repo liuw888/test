@@ -170,7 +170,7 @@ def post():
                             <td>%s</td>
                         </tr>
                 </TABLE>>];  ''' % (bcolor, task, peopleName, dateDay)
-                last = last +1
+                last = j+65
                 res = res +  chr(j+65) +'->'+chr(j+66)+'   '
                 
 
@@ -193,7 +193,7 @@ def post():
                         <td>Since %s</td>
                     </tr>
                 </TABLE>>];  ''' % (bcolor, marker, task, peopleName, dateDay)
-                last = last +1
+                last = j+65
                 res = res +  chr(j+65) +'->'+chr(j+66)+'   '
                 
 
@@ -219,7 +219,7 @@ def post():
                         <td>For support: <u><font color="blue">http://manage-info.intranet.dow.com/Forms/DS/DS-MMD/F_DS_MMD-MSOR.asp</font></u></td>
                     </tr>
                 </TABLE>>];  ''' % (bcolor, marker, task, peopleName, dateDay)
-                last = last +1
+                last = j+65
                 res = res +  chr(j+65) +'->'+chr(j+66)+'   '
                 
 
@@ -242,7 +242,7 @@ def post():
                         <td>%s</td>
                     </tr>
                 </TABLE>>];  ''' % (bcolor, marker, task, peopleName, dateDay)
-                last = last +1
+                last = j+65
                 res = res +  chr(j+65) +'->'+chr(j+66)+'   '
                 
 
