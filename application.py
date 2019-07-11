@@ -168,7 +168,7 @@ def post():
                             <td>%s</td>
                         </tr>
                 </TABLE>>];\n''' % (bcolor, task, peopleName, dateDay)
-                res += chr(j+65) +'->'+chr(j+66)
+                res += chr(j+65) +'->'+chr(j+66)+'   '
 
             elif("Pending" in marker):
                 res += chr(j+65) + ''' [label=< \n
@@ -189,7 +189,7 @@ def post():
                         <td>Since %s</td>
                     </tr>
                 </TABLE>>];\n''' % (bcolor, marker, task, peopleName, dateDay)
-                res += chr(j+65) +'->'+chr(j+66)
+                res += chr(j+65) +'->'+chr(j+66)+'   '
 
             elif(marker == "Staff failure"):
                 res += chr(j+65) +''' [label=< \n
@@ -213,7 +213,7 @@ def post():
                         <td>For support: <u><font color="blue">http://manage-info.intranet.dow.com/Forms/DS/DS-MMD/F_DS_MMD-MSOR.asp</font></u></td>
                     </tr>
                 </TABLE>>];\n''' % (bcolor, marker, task, peopleName, dateDay)
-                res += chr(j+65) +'->'+chr(j+66)
+                res += chr(j+65) +'->'+chr(j+66)+'   '
 
             else:
                 res += chr(j+65) +''' [label=< \n
@@ -234,7 +234,7 @@ def post():
                         <td>%s</td>
                     </tr>
                 </TABLE>>];\n''' % (bcolor, marker, task, peopleName, dateDay)
-                res += chr(j+65) +'->'+chr(j+66)
+                res += chr(j+65) +'->'+chr(j+66)+'   '
 
             
 
