@@ -33,7 +33,6 @@ def test():
 
 @app.route('/request', methods=['POST'])
 def post():
-    return '''api works'''
     file = request.files.get('htmlfile', '')
     filename = secure_filename(file.filename)
     #file.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
