@@ -42,6 +42,7 @@ def post():
     #return '''{}'''.format(rows[1])
     
     #dot language starts here!
+    last =0
     i = 1
     edge = []
     j = 1
@@ -147,6 +148,7 @@ def post():
                             <td>%s</td>
                         </tr>
                 </TABLE>>];  ''' % (bcolor, task, peopleName)
+                res = res +  chr(last) +'->'+chr(j+65)+'   '
                 
 
             elif(marker == "Completed"):
@@ -168,7 +170,9 @@ def post():
                             <td>%s</td>
                         </tr>
                 </TABLE>>];  ''' % (bcolor, task, peopleName, dateDay)
+                last = last +1
                 res = res +  chr(j+65) +'->'+chr(j+66)+'   '
+                
 
             elif("Pending" in marker):
                 res += chr(j+65) + ''' [label=< 
@@ -189,6 +193,8 @@ def post():
                         <td>Since %s</td>
                     </tr>
                 </TABLE>>];  ''' % (bcolor, marker, task, peopleName, dateDay)
+                last = last +1
+                res = res +  chr(j+65) +'->'+chr(j+66)+'   '
                 
 
             elif(marker == "Staff failure"):
@@ -213,6 +219,8 @@ def post():
                         <td>For support: <u><font color="blue">http://manage-info.intranet.dow.com/Forms/DS/DS-MMD/F_DS_MMD-MSOR.asp</font></u></td>
                     </tr>
                 </TABLE>>];  ''' % (bcolor, marker, task, peopleName, dateDay)
+                last = last +1
+                res = res +  chr(j+65) +'->'+chr(j+66)+'   '
                 
 
             else:
@@ -234,6 +242,8 @@ def post():
                         <td>%s</td>
                     </tr>
                 </TABLE>>];  ''' % (bcolor, marker, task, peopleName, dateDay)
+                last = last +1
+                res = res +  chr(j+65) +'->'+chr(j+66)+'   '
                 
 
             
