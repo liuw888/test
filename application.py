@@ -148,7 +148,7 @@ def post():
                             <td>%s</td>
                         </tr>
                 </TABLE>>];  ''' % (bcolor, task, peopleName)
-                
+                res = res +  chr(last) +'->'+chr(j+65)+'[color="white"]   '
                 
 
             elif(marker == "Completed"):
