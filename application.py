@@ -293,7 +293,7 @@ def post():
             peopleName = str(people)
             bcolor = "#C21807"
 
-            res += chr(j+65) + '''<
+            res += chr(j+65) + ''' [label=< 
                 <TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0" CELLPADDING="4">
                     <tr >
                         <td colspan ="3" bgcolor='%s'>Rejected</td>
@@ -311,8 +311,8 @@ def post():
                         <td colspan="2">%s</td>
                     </tr>
 
-                </TABLE>>''' % (bcolor, task, peopleName, dateDay)
-            res += chr(last) +'->'+chr(j+65) + '  '
+                </TABLE>>];''' % (bcolor, task, peopleName, dateDay)
+            
             
 
         i = i+1
