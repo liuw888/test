@@ -32,11 +32,11 @@ def hi():
 def graphtest():
     print('test function works',file = sys.stderr)
     dot = Digraph()
-    dot.node('A', 'King Arthur')
+    # dot.node('A', 'King Arthur')
     # dot.node('B', 'Sir Bedevere the Wise')
     # dot.edge('A','B')
     # dot.format = 'svg'
-    dot.render(currentpath + '/output/toPDF', view=True)
+    # dot.render(currentpath + '/output/toPDF', view=True)
     return render_template('index.html',path = currentpath)
 
 
