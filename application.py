@@ -1,4 +1,4 @@
-from flask import Flask, request, jsonify, Response
+from flask import Flask, request, jsonify, Response, render_template
 from flask_cors import CORS, cross_origin
 from werkzeug.utils import secure_filename
 import os
@@ -20,19 +20,24 @@ os.environ["PATH"] += os.pathsep + \
     graphvizpath
 # POST - just get the image and metadata
 
+@app.route('/')
+def homepage():
+    return 'Welcome to the homepage'
+
 @app.route('/hi')
 def hi():
     return 'hello, world!'
 
-@app.route('graphtest')
+@app.route('/graphtest')
 def graphtest():
     print('test function works',file = sys.stderr)
-    dot = Digraph('structs', node_attr={'shape': 'plaintext'})
+    dot = Digraph()
     dot.node('A', 'King Arthur')
     dot.node('B', 'Sir Bedevere the Wise')
     dot.edge('A','B')
     dot.format = 'svg'
-    dot.render()
+    dot.render('/output/toPDF', view=True)
+    return render_template('index.html')
 
 
 
