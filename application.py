@@ -31,7 +31,7 @@ def hi():
 @app.route('/graphtest')
 def graphtest():
     print('test function works',file = sys.stderr)
-    dot = Digraph()
+    # dot = Digraph()
     # dot.node('A', 'King Arthur')
     # dot.node('B', 'Sir Bedevere the Wise')
     # dot.edge('A','B')
