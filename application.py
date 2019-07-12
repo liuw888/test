@@ -37,7 +37,7 @@ def graphtest():
     # dot.edge('A','B')
     # dot.format = 'svg'
     # dot.render('/output/toPDF', view=True)
-    return render_template('index.html')
+    return render_template('index.html',path = currentpath)
 
 
 
