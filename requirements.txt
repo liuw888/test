@@ -15,3 +15,4 @@ graphviz==0.11.1
 pybase64==1.0.0
 flask_cors==3.0.8
 lxml==4.3.4
+graphviz==0.11.1
