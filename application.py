@@ -26,7 +26,7 @@ def homepage():
 
 @app.route('/hi')
 def hi():
-    return 'hello, world!'
+    return "Hi"
 
 @app.route('/graphtest')
 def graphtest():
@@ -343,6 +343,7 @@ def post():
 @app.route('/run', methods=['POST','GET'])
 def run():
     if request.method == 'POST':
+        
         file = request.files['htmlfile']
         filename = secure_filename(file.filename)
         #file.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
@@ -362,6 +363,7 @@ def run():
         i = 1
         edge = []
         j = 1
+        count = 1
         res =""
         row_td = rows[0].find_all('td')
         header=['']*len(row_td)
@@ -369,6 +371,7 @@ def run():
         for x in range( len(row_td)-1):
             header[x] = BeautifulSoup(str(row_td[x]), "lxml").get_text()
         print(header[:7])
+    
         
         while(i < len(rows)-1):
             row_td = rows[i].find_all('td')
@@ -455,12 +458,12 @@ def run():
 
                 if(marker == "Waiting"):
                     res+= '''
-                    <TABLE BORDER="1" CELLBORDER="1" CELLSPACING="0" CELLPADDING="8" style="float: left;" align="center">
+                    <TABLE BORDER="1" CELLBORDER="1" CELLSPACING="0" CELLPADDING="8" style="float: left;" align="center" >
                             <tr >
                                 <td colspan ="4" bgcolor='%s' align="center">Waiting</td>
                             </tr>
                             <tr>
-                                <td rowspan ="3" colspan ="3" ><img src = %s></img></td>
+                                <td rowspan ="3" colspan ="2" ><img src = %s></img></td>
                             </tr>
                             <tr>
                                 <td align="center">%s</td>
@@ -469,6 +472,7 @@ def run():
                                 <td align="center">%s</td>
                             </tr>
                     </TABLE> ''' % (bcolor,img, task, peopleName)
+                    
                 # res = res +  chr(last) +'->'+chr(j+65)+'[color="white"]   '
                     
 
