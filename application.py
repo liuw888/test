@@ -28,7 +28,6 @@ def run():
         #drawing tables
         last =0
         i = 1
-        edge = []
         j = 1
         count = 1
         res =""
@@ -154,47 +153,47 @@ def run():
         
 
         i = 1
-    while(i < len(rows)-1):
-        row_td = rows[i].find_all('td')
-        str_cells = str(row_td[8])
-        statusText = BeautifulSoup(str_cells, "lxml").get_text()
-        status = str(statusText)
-        if(status == "Completed- Rejected"):
-            marker = "Rejected"
-            color = ""
+        while(i < len(rows)-1):
+            row_td = rows[i].find_all('td')
+            str_cells = str(row_td[8])
+            statusText = BeautifulSoup(str_cells, "lxml").get_text()
+            status = str(statusText)
+            if(status == "Completed- Rejected"):
+                marker = "Rejected"
+                color = ""
 
-            time_cell = str(row_td[7])
-            time = BeautifulSoup(time_cell, "lxml").get_text()
-            if("." in time):
-                dateDay = time[:10]
-                dateArr = dateDay.split(".")
-                dateDay = dateArr[2]+"/"+dateArr[1]+"/"+dateArr[0]
-            elif("/" in time):
-                dateDay = time[:10]
-                dateArr = dateDay.split("/")
-                dateDay = dateArr[2]+"/"+dateArr[0]+"/"+dateArr[1]
-            else:
-                dateDay = time[:4]+"/"+time[4:6]+"/"+time[6:8]
+                time_cell = str(row_td[7])
+                time = BeautifulSoup(time_cell, "lxml").get_text()
+                if("." in time):
+                    dateDay = time[:10]
+                    dateArr = dateDay.split(".")
+                    dateDay = dateArr[2]+"/"+dateArr[1]+"/"+dateArr[0]
+                elif("/" in time):
+                    dateDay = time[:10]
+                    dateArr = dateDay.split("/")
+                    dateDay = dateArr[2]+"/"+dateArr[0]+"/"+dateArr[1]
+                else:
+                    dateDay = time[:4]+"/"+time[4:6]+"/"+time[6:8]
 
-            d0 = datetime.date.today()
-            d1 = datetime.date(int(dateDay[0:4]), int(
-                dateDay[5:7]), int(dateDay[8:]))
-            delta = d0 - d1
-            daypass = str(delta.days)
-            print(daypass)
+                d0 = datetime.date.today()
+                d1 = datetime.date(int(dateDay[0:4]), int(
+                    dateDay[5:7]), int(dateDay[8:]))
+                delta = d0 - d1
+                daypass = str(delta.days)
+                print(daypass)
 
-            task_cell = str(row_td[1])
-            task = BeautifulSoup(task_cell, "lxml").get_text()
-            task = task.replace("&", "and")
-            print(task)
+                task_cell = str(row_td[1])
+                task = BeautifulSoup(task_cell, "lxml").get_text()
+                task = task.replace("&", "and")
+                print(task)
 
-            people_name = str(row_td[2])
-            people = BeautifulSoup(people_name, "lxml").get_text()
-            peopleName = str(people)
-            bcolor = "#C21807"
-            img =" https://github.com/liuw888/test/blob/master/wrong.png?raw=true"
+                people_name = str(row_td[2])
+                people = BeautifulSoup(people_name, "lxml").get_text()
+                peopleName = str(people)
+                bcolor = "#C21807"
+                img =" https://github.com/liuw888/test/blob/master/wrong.png?raw=true"
 
-            res = constructTable(res,bcolor, marker,img, task, peopleName, dateDay)
+                res = constructTable(res,bcolor, marker,img, task, peopleName, dateDay)
 
         return render_template("index2.html",tablecontent=res)
 
