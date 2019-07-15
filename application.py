@@ -154,7 +154,7 @@ def run():
 
                     res+= '''
                      <td align="center">
-                    <TABLE "BORDER="1" CELLBORDER="1" CELLSPACING="0" CELLPADDING="8"  width="520" height="150" >
+                    <TABLE BORDER="1" CELLBORDER="1" CELLSPACING="0" CELLPADDING="8"  width="520" height="150" >
                             <tr>
                                 <td colspan ="3" bgcolor='%s' align="center" height = "20" >Waiting</td>
                             </tr>
@@ -166,7 +166,7 @@ def run():
                             <tr>
                                 <td align="center" rowspan ="1">%s</td>
                             </tr>
-                    </TABLE> </td>''' % (waitj, bcolor,img, task, peopleName)
+                    </TABLE> </td>''' % ( bcolor,img, task, peopleName)
                     if waitj %2 ==0:
                         res+= '</tr><tr>'
                     
@@ -267,14 +267,17 @@ def constructTable(res,bcolor, marker,img, task, peopleName, dateDay,j):
     if(j>2):
         res += ''' <p align="center"><font size="6">&darr;</font></p>'''
 
+    if marker=="Staff failure" or marker == "Aborted":
+        peopleNamecell = '''%s <a href="mailto:@dow.com">(email for support)</a>''' % peopleName
+    else:
+        peopleNamecell = '''%s''' % peopleName
+
     res += '''<TABLE BORDER="1" CELLBORDER="1" CELLSPACING="0" CELLPADDING="4" align="center">
                     <tr >
                         <td colspan ="3" bgcolor='%s'align="center">%s</td>
                     </tr>
                     <tr>
                         <td  rowspan = "4"><img src = %s></img></td>
-                    </tr>
-                    <tr>
                         <td colspan ="2"align="center"> %s</td>
                     </tr>
                     <tr>
@@ -284,7 +287,7 @@ def constructTable(res,bcolor, marker,img, task, peopleName, dateDay,j):
                         <td colspan="2" align="center">%s</td>
                     </tr>
                 </TABLE>
-                ''' % (bcolor, marker, img, task, peopleName, dateDay)
+                ''' % (bcolor, marker, img, task, peopleNamecell, dateDay)
     
 
     return res; 
