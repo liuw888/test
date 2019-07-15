@@ -219,7 +219,7 @@ def constructTable(res,bcolor, marker,img, task, peopleName, dateDay):
                         <td colspan="2" align="center">%s</td>
                     </tr>
                 </TABLE>
-                ''' % (bcolor, marker, img, task, peopleName, dateDay)
+                <p align="center"><font size="6">&darr;</font></p>''' % (bcolor, marker, img, task, peopleName, dateDay)
     return res; 
 
 @app.route('/havefun', methods=['POST','GET'])
