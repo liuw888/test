@@ -1,16 +1,12 @@
 <!doctype html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
     <title>CMT_SR_VIZ</title>
 </head>
 <body>
-<div align="center">
-    <p>{{row_td}}</p>
-    {% for head in header %}
- 	<li>{{ head[1] }}</li>
-    {% endfor %}</ul>
-</div>
+
+    {{tablecontent| safe}}
+
 
 </body>
 </html>

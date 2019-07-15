@@ -1,0 +1,13 @@
+digraph structs {
+	node [shape=plaintext]
+	A [label="King Arthur"]
+	B [label="Sir Bedevere the Wise"]
+	C [label=<
+                    <TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0" CELLPADDING="4">
+                        <tr >
+                            <td colspan ="3"><img src = "C:/ok.png"></img></td>
+                        </tr> 
+                     </TABLE>>]
+	A -> B
+	B -> C
+}
