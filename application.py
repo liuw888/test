@@ -119,7 +119,7 @@ def run():
                 if(marker == "Waiting"):
                     waitj = waitj +1
                     if(waitj == 1):
-                        res += '<br><br><br>'
+                        res += '<p align="center"><font size="6">&darr;</font></p>'
                     res+= '''
                     <TABLE BORDER="1" CELLBORDER="1" CELLSPACING="0" CELLPADDING="8" style="float: left;" align="center" >
                             <tr >
