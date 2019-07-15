@@ -13,6 +13,10 @@ app = Flask(__name__)
 def homepage():
     return 'Welcome to the homepage'
 
+@app.route('/test')
+def test():
+    return render_template("index3.html")
+
 
 @app.route('/run', methods=['POST','GET'])
 def run():
@@ -25,19 +29,23 @@ def run():
         soup = BeautifulSoup(content, 'lxml')
         rows = soup.find_all('tr')
         
-        #drawing tables
+        #define variables for drawing tables
         last =0
         i = 1
         j = 1
+        k=0
         count = 1
         res =""
         waitj =0
+        startIndex =-1
+        incomplete = []
+        #read data from html file
         row_td = rows[0].find_all('td')
         header=['']*len(row_td)
-        print(len(row_td))
+        #print(len(row_td))
         for x in range( len(row_td)-1):
             header[x] = BeautifulSoup(str(row_td[x]), "lxml").get_text()
-        print(header[:7])
+        #print(header[:7])
     
         
         while(i < len(rows)-1):
@@ -48,11 +56,13 @@ def run():
 
             if(status == "Completed- Successfully" or status == "Released- Notified" or status == "Released"
             or status == 'Released- Waiting' or status == "Completed- Aborted"
-            or "Failure" in status):
-                j = j+1;
+            or "Failure" in status or status=="Created" or status =="Created- Not Released"):
+                j = j+1
                 marker = ""
                 color = ""
+                
 
+                #parse day time
                 time_cell = str(row_td[7])
                 time = BeautifulSoup(time_cell, "lxml").get_text()
                 if("." in time):
@@ -65,16 +75,38 @@ def run():
                     dateDay = dateArr[2]+"/"+dateArr[0]+"/"+dateArr[1]
                 else:
                     dateDay = time[:4]+"/"+time[4:6]+"/"+time[6:8]
-
                 d0 = datetime.date.today()
                 d1 = datetime.date(int(dateDay[0:4]), int(dateDay[5:7]), int(dateDay[8:]))
                 delta = d0 - d1
                 daypass = str(delta.days)
-                print(daypass)
+                #print(daypass)
+
+                # parse task name
+                task_cell = str(row_td[1])
+                task = BeautifulSoup(task_cell, "lxml").get_text()
+                task = task.replace("&", "and")
+                #print(task)
 
                 status_cell = str(row_td[8])
                 statusText = BeautifulSoup(status_cell, "lxml").get_text()
                 status = str(statusText)
+
+                #check if the project is still running
+                if(status=="Completed- Rejected"):
+                    incomplete.append(False)
+
+                if(status=="Released- Notified" or status == "Completed- Aborted"
+                or status=="Completed- Staffing Failure" or status == "Completed- Successfully"):
+                    startIndex = j;
+                
+
+                if(j>startIndex and startIndex >0):
+                    if(status=="Created" or status =="Created- Not Released" or status=="Completed- Skipped"):
+                        incomplete.append(True)
+                        print(task)
+                    else:
+                        incomplete.append( False)
+                    #print(incomplete)
 
                 if(status == 'Completed- Successfully'):
                     marker = "Completed"
@@ -97,15 +129,11 @@ def run():
                     bcolor = "#C21807"
                     img ="https://github.com/liuw888/test/blob/master/Staff%20failure.png?raw=true"
 
-                task_cell = str(row_td[1])
-                task = BeautifulSoup(task_cell, "lxml").get_text()
-                task = task.replace("&", "and")
-                print(task)
-
                 people_name = str(row_td[2])
                 people = BeautifulSoup(people_name, "lxml").get_text()
                 peoplenames = people.split(',')
-                print(peoplenames)
+
+                #print(peoplenames)
                 peopleName = people
                 k = 0
                 if(len(peoplenames) > 3):
@@ -151,10 +179,22 @@ def run():
                     # For support: <u><font color="blue">http://manage-info.intranet.dow.com/Forms/DS/DS-MMD/F_DS_MMD-MSOR.asp</font></u>
                     # res = res +  chr(j+65) +'->'+chr(j+66)+'   '
 
-                else: #aborted
+                elif(marker == "Aborted"):
                     res = constructTable (res,bcolor, marker,img, task, peopleName, dateDay,j)
                 j = j+1
             i = i+1
+        
+            projectIncomplete = True
+            if len(incomplete) ==0:
+                projectIncomplete = False
+            for booleanres in incomplete:
+                if booleanres == False:
+                    projectIncomplete=False
+                    break
+            print(projectIncomplete)
+            if projectIncomplete:
+                return render_template("index3.html",tablecontent =res)
+
         
 
         i = 1
