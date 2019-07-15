@@ -194,6 +194,7 @@ def run():
                 img =" https://github.com/liuw888/test/blob/master/wrong.png?raw=true"
 
                 res = constructTable(res,bcolor, marker,img, task, peopleName, dateDay)
+            i=i+1
 
         return render_template("index2.html",tablecontent=res)
 
