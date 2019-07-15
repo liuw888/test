@@ -61,6 +61,13 @@ def run():
                 marker = ""
                 color = ""
                 
+                # parse task name
+                task_cell = str(row_td[1])
+                task = BeautifulSoup(task_cell, "lxml").get_text()
+                task = task.replace("&", "and")
+                if ("Notification" in task) or ("Notify" in task):
+                    pass
+                #print(task)
 
                 #parse day time
                 time_cell = str(row_td[7])
@@ -80,12 +87,6 @@ def run():
                 delta = d0 - d1
                 daypass = str(delta.days)
                 #print(daypass)
-
-                # parse task name
-                task_cell = str(row_td[1])
-                task = BeautifulSoup(task_cell, "lxml").get_text()
-                task = task.replace("&", "and")
-                #print(task)
 
                 status_cell = str(row_td[8])
                 statusText = BeautifulSoup(status_cell, "lxml").get_text()
@@ -184,16 +185,19 @@ def run():
                 j = j+1
             i = i+1
         
-            projectIncomplete = True
-            if len(incomplete) ==0:
-                projectIncomplete = False
-            for booleanres in incomplete:
-                if booleanres == False:
-                    projectIncomplete=False
-                    break
-            print(projectIncomplete)
-            if projectIncomplete:
-                return render_template("index3.html",tablecontent =res)
+        projectIncomplete = True
+        if len(incomplete) ==0:
+            projectIncomplete = False
+            message = "This project has been completed!"
+            return render_template("index3.html",tablecontent =res, popupwindow = message)
+        for booleanres in incomplete:
+            if booleanres == False:
+                projectIncomplete=False
+                break
+        print(projectIncomplete)
+        if projectIncomplete:
+            message = "This project is still running"
+            return render_template("index3.html",tablecontent =res,popupwindow= message)
 
         
 
