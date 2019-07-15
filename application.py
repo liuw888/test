@@ -154,7 +154,7 @@ def run():
 
                     res+= '''
                      <td align="center">
-                    <TABLE class = "table%s"BORDER="1" CELLBORDER="1" CELLSPACING="0" CELLPADDING="8"  width="520" height="150" >
+                    <TABLE "BORDER="1" CELLBORDER="1" CELLSPACING="0" CELLPADDING="8"  width="520" height="150" >
                             <tr>
                                 <td colspan ="3" bgcolor='%s' align="center" height = "20" >Waiting</td>
                             </tr>
@@ -244,16 +244,18 @@ def run():
         
         if len(incomplete) ==0:
             projectIncomplete = False
-            message = "This project has been completed!"
-            return render_template("index3.html",tablecontent =res, popupwindow = message)
+            
         for booleanres in incomplete:
             if booleanres == False:
                 projectIncomplete=False
                 break
         print(projectIncomplete)
         if projectIncomplete:
-            message = "This project is still running"
-            return render_template("index3.html",tablecontent =res,popupwindow= message)
+            res += ''' <p align="center"><font size="6">&darr;</font></p>
+            <TABLE BORDER="1" CELLBORDER="1" CELLSPACING="0" CELLPADDING="5"  align="center">
+            <tr >
+                <td colspan ="3" bgcolor='#B0E0E6' align="center"><h2>This porject is still running</h2></td>
+            </tr></TABLE>'''
 
         
         return render_template("index2.html",tablecontent=res)
