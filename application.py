@@ -149,21 +149,26 @@ def run():
                     waitj = waitj +1
                     if(waitj == 1):
                         res += '<p align="center"><font size="6">&darr;</font></p>'
+                        res +='<table border="0" cellspacing="0" cellpadding="5" align="center"  ><tr >'
+
                     res+= '''
-                    <TABLE BORDER="1" CELLBORDER="1" CELLSPACING="0" CELLPADDING="8" style="float: left;" align="center" >
-                            <tr >
-                                <td colspan ="4" bgcolor='%s' align="center">Waiting</td>
+                     <td align="center">
+                    <TABLE class = "table%s"BORDER="1" CELLBORDER="1" CELLSPACING="0" CELLPADDING="8"  width="520" height="150" >
+                            <tr>
+                                <td colspan ="3" bgcolor='%s' align="center" height = "20" >Waiting</td>
                             </tr>
                             <tr>
-                                <td rowspan ="3" colspan ="2" ><img src = %s></img></td>
+                                <th rowspan ="2" colspan ="1" width ="10"><img src = %s></img></td>
+                          
+                                <td align="center" rowspan ="1">%s</td>
                             </tr>
                             <tr>
-                                <td align="center">%s</td>
+                                <td align="center" rowspan ="1">%s</td>
                             </tr>
-                            <tr>
-                                <td align="center">%s</td>
-                            </tr>
-                    </TABLE> ''' % (bcolor,img, task, peopleName)
+                    </TABLE> </td>''' % (waitj, bcolor,img, task, peopleName)
+                    if waitj %2 ==0:
+                        res+= '</tr><tr>'
+                    
  
                 elif(marker == "Completed"):
                     res  = constructTable(res,bcolor, marker,img, task, peopleName, dateDay,j)
@@ -246,6 +251,7 @@ def run():
                 res = constructTable(res,bcolor, marker,img, task, peopleName, dateDay,j)
             i=i+1
 
+        res +=' </tr></table>'
         return render_template("index2.html",tablecontent=res)
 
     return render_template("index.html")
