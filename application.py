@@ -37,6 +37,7 @@ def run():
         count = 1
         res =""
         waitj =0
+        projectIncomplete = True
         startIndex =-1
         incomplete = []
         #read data from html file
@@ -189,23 +190,8 @@ def run():
                     res = constructTable (res,bcolor, marker,img, task, peopleName, dateDay,j)
                 j = j+1
             i = i+1
-        
-        projectIncomplete = True
-        if len(incomplete) ==0:
-            projectIncomplete = False
-            message = "This project has been completed!"
-            return render_template("index3.html",tablecontent =res, popupwindow = message)
-        for booleanres in incomplete:
-            if booleanres == False:
-                projectIncomplete=False
-                break
-        print(projectIncomplete)
-        if projectIncomplete:
-            message = "This project is still running"
-            return render_template("index3.html",tablecontent =res,popupwindow= message)
 
-        
-
+        #check rejection
         i = 1
         while(i < len(rows)-1):
             row_td = rows[i].find_all('td')
@@ -216,6 +202,7 @@ def run():
                 marker = "Rejected"
                 color = ""
                 j=j+1;
+                projectIncomplete = False
 
                 time_cell = str(row_td[7])
                 time = BeautifulSoup(time_cell, "lxml").get_text()
@@ -250,8 +237,25 @@ def run():
 
                 res = constructTable(res,bcolor, marker,img, task, peopleName, dateDay,j)
             i=i+1
+        
+        if waitj != 0:
+            res +=' </tr></table>'
 
-        res +=' </tr></table>'
+        
+        if len(incomplete) ==0:
+            projectIncomplete = False
+            message = "This project has been completed!"
+            return render_template("index3.html",tablecontent =res, popupwindow = message)
+        for booleanres in incomplete:
+            if booleanres == False:
+                projectIncomplete=False
+                break
+        print(projectIncomplete)
+        if projectIncomplete:
+            message = "This project is still running"
+            return render_template("index3.html",tablecontent =res,popupwindow= message)
+
+        
         return render_template("index2.html",tablecontent=res)
 
     return render_template("index.html")
