@@ -267,7 +267,7 @@ def constructTable(res,bcolor, marker,img, task, peopleName, dateDay,j):
     if(j>2):
         res += ''' <p align="center"><font size="6">&darr;</font></p>'''
 
-    if marker=="Staff failure" or marker == "Aborted":
+    if marker=="Staff failure" or marker == "Aborted" or marker == "Rejected":
         peopleNamecell = '''%s <a href="mailto:@dow.com">(email for support)</a>''' % peopleName
     else:
         peopleNamecell = '''%s''' % peopleName
