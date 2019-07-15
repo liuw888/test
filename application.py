@@ -254,7 +254,9 @@ def run():
             res += ''' <p align="center"><font size="6">&darr;</font></p>
             <TABLE BORDER="1" CELLBORDER="1" CELLSPACING="0" CELLPADDING="5"  align="center">
             <tr >
-                <td colspan ="3" bgcolor='#B0E0E6' align="center"><h2>This porject is still running</h2></td>
+                <td colspan ="3" bgcolor='#B0E0E6' align="center"><h2>
+                The backend workflow is still running.  <br>
+                Tasks are yet to be assigned.  </h2></td>
             </tr></TABLE>'''
 
         
