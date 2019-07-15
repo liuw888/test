@@ -31,6 +31,7 @@ def run():
         j = 1
         count = 1
         res =""
+        waitj =0
         row_td = rows[0].find_all('td')
         header=['']*len(row_td)
         print(len(row_td))
@@ -48,6 +49,7 @@ def run():
             if(status == "Completed- Successfully" or status == "Released- Notified" or status == "Released"
             or status == 'Released- Waiting' or status == "Completed- Aborted"
             or "Failure" in status):
+                j = j+1;
                 marker = ""
                 color = ""
 
@@ -115,6 +117,9 @@ def run():
                             peopleName += "<br/>"
 
                 if(marker == "Waiting"):
+                    waitj = waitj +1
+                    if(waitj == 1):
+                        res += '<br><br><br>'
                     res+= '''
                     <TABLE BORDER="1" CELLBORDER="1" CELLSPACING="0" CELLPADDING="8" style="float: left;" align="center" >
                             <tr >
@@ -132,22 +137,22 @@ def run():
                     </TABLE> ''' % (bcolor,img, task, peopleName)
  
                 elif(marker == "Completed"):
-                    res  = constructTable(res,bcolor, marker,img, task, peopleName, dateDay)
+                    res  = constructTable(res,bcolor, marker,img, task, peopleName, dateDay,j)
                     last = j+65
 
                 elif("Pending" in marker):
-                    res =constructTable(res,bcolor, marker,img, task, peopleName, dateDay)
+                    res =constructTable(res,bcolor, marker,img, task, peopleName, dateDay,j)
                     last = j+65
                     # res = res +  chr(j+65) +'->'+chr(j+66)+'   '
 
                 elif(marker == "Staff failure"):
-                    res =constructTable (res,bcolor, marker,img, task, peopleName, dateDay)
+                    res =constructTable (res,bcolor, marker,img, task, peopleName, dateDay,j)
                     last = j+65
                     # For support: <u><font color="blue">http://manage-info.intranet.dow.com/Forms/DS/DS-MMD/F_DS_MMD-MSOR.asp</font></u>
                     # res = res +  chr(j+65) +'->'+chr(j+66)+'   '
 
                 else: #aborted
-                    res = constructTable (res,bcolor, marker,img, task, peopleName, dateDay)
+                    res = constructTable (res,bcolor, marker,img, task, peopleName, dateDay,j)
                 j = j+1
             i = i+1
         
@@ -161,6 +166,7 @@ def run():
             if(status == "Completed- Rejected"):
                 marker = "Rejected"
                 color = ""
+                j=j+1;
 
                 time_cell = str(row_td[7])
                 time = BeautifulSoup(time_cell, "lxml").get_text()
@@ -193,7 +199,7 @@ def run():
                 bcolor = "#C21807"
                 img =" https://github.com/liuw888/test/blob/master/wrong.png?raw=true"
 
-                res = constructTable(res,bcolor, marker,img, task, peopleName, dateDay)
+                res = constructTable(res,bcolor, marker,img, task, peopleName, dateDay,j)
             i=i+1
 
         return render_template("index2.html",tablecontent=res)
@@ -201,7 +207,10 @@ def run():
     return render_template("index.html")
 
 
-def constructTable(res,bcolor, marker,img, task, peopleName, dateDay):
+def constructTable(res,bcolor, marker,img, task, peopleName, dateDay,j):
+    if(j>2):
+        res += ''' <p align="center"><font size="6">&darr;</font></p>'''
+
     res += '''<TABLE BORDER="1" CELLBORDER="1" CELLSPACING="0" CELLPADDING="4" align="center">
                     <tr >
                         <td colspan ="3" bgcolor='%s'align="center">%s</td>
@@ -219,7 +228,9 @@ def constructTable(res,bcolor, marker,img, task, peopleName, dateDay):
                         <td colspan="2" align="center">%s</td>
                     </tr>
                 </TABLE>
-                <p align="center"><font size="6">&darr;</font></p>''' % (bcolor, marker, img, task, peopleName, dateDay)
+                ''' % (bcolor, marker, img, task, peopleName, dateDay)
+    
+
     return res; 
 
 @app.route('/havefun', methods=['POST','GET'])
