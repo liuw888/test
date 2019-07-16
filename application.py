@@ -254,9 +254,13 @@ def run():
             res += ''' <p align="center"><font size="6">&darr;</font></p>
             <TABLE BORDER="1" CELLBORDER="1" CELLSPACING="0" CELLPADDING="5"  align="center">
             <tr >
-                <td colspan ="3" bgcolor='#B0E0E6' align="center"><h2>
+                <td>
+                    <img src ="https://github.com/liuw888/test/blob/master/todo.png?raw=true"></img>
+                </td>
+                <td colspan ="3"  align="center"><h3>
                 The backend workflow is still running.  <br>
-                Tasks are yet to be assigned.  </h2></td>
+                Tasks are yet to be assigned.  </h3></td>
+
             </tr></TABLE>'''
 
         
@@ -299,7 +303,6 @@ def havefun():
     if request.method == 'POST':
         language = request.form.get('language')
         return '''<h1> You jsu said{}</h1>
-            <h1>but I don't care, I would like to say I love you</h1>
             '''.format(language)
 
     return '''<form method="POST">
