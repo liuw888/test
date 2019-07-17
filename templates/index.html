@@ -4,20 +4,68 @@
 
     <meta charset="UTF-8">
     <TITLE>CMT summary repost visulization</TITLE>
+    <style>
+    h1, p {
+        font-family: Arial, Helvetica, sans-serif;
+    }
+    .container {
+        position: relative;
+        text-align: center;
+        background-color: rgba(0,0,0,0.4);
+    }
+
+    .centered {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+    }
+    .wrapper {
+        opacity: 0.6;
+        filter: alpha(opacity=80); /* msie */
+        background-color: #000;
+    }
+
+    .white-box {
+        background-color: white;
+        color: black;
+    }
+    .content, .inner{
+        display:block;
+    }
+    .content{
+        padding-left: 120;
+        padding-right: 120;
+        padding-top : 150;
+        padding-bottom: 150;
+        
+    }
+    </style>
 
 </HEAD>
 
-<BODY BGCOLOR="FFFFFF">
-<div align="center">
-    <br>
-    <h1>Welcome to CMT summary report visulization</h1>
-    <p>select your report file (for support: <a href="mailto:DLMatlCMTSupport@dow.com">DLMatlCMTSupport@dow.com)</a></p>
-    <br>
-    <br>
-    <form method="POST" enctype=multipart/form-data>
-            <input type="file" name="htmlfile" >
-            <input type="submit" value="Transfer to flowchart">
-    </form>
+<BODY>
+<div class="container">
+    <div class="wrapper">
+        <img src = "https://github.com/liuw888/test/blob/master/background.jpg?raw=true" alt="background" style="width:100%; height:100%;">
+    </div>
+  <div class="centered">
+    <div class = "white-box">
+        <div class = "content">
+            <div class="inner">
+                <h1>CMT summary report visulization</h1>
+                <p>select your report file (for support: <a href="mailto:DLMatlCMTSupport@dow.com">DLMatlCMTSupport@dow.com)</a></p>
+                <br>
+                <br>
+                <form method="POST" enctype=multipart/form-data>
+                        <input type="file" name="htmlfile" >
+                        <input type="submit" value="Transfer to flowchart">
+                </form>
+            </div>
+        </div>
+    </div>
+  </div>
+    
 </div>
 
 
