@@ -29,17 +29,46 @@
     .white-box {
         background-color: white;
         color: black;
+        padding-left: 400;
+        padding-right:400;
+        padding-top :200;
+        padding-bottom: 200;
     }
     .content, .inner{
         display:block;
     }
-    .content{
-        padding-left: 120;
-        padding-right: 120;
-        padding-top : 150;
-        padding-bottom: 150;
-        
+
+    input[type=file] {
+        background-color: #e7e7e7; /* Green */
+        z-index :10;
+        padding: 13;
+       border : 2;
+       border-style:dashed;
+       border-color:grey;
+       border-radius: 10px;
     }
+    .file-input{
+        background-color: #008CBA; /* Green */
+        border: none;
+        color: white;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        font-size: 16px;
+        z-index :1;
+    }
+    input[type=submit]{
+        background-color: #008CBA; /* Green */
+        border: none;
+        color: white;
+        padding: 15 32;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        font-size: 16px;
+        border-radius: 10px;
+    }
+    
     </style>
 
 </HEAD>
@@ -51,22 +80,27 @@
     </div>
   <div class="centered">
     <div class = "white-box">
-        <div class = "content">
-            <div class="inner">
-                <h1>CMT summary report visulization</h1>
-                <p>select your report file (for support: <a href="mailto:DLMatlCMTSupport@dow.com">DLMatlCMTSupport@dow.com)</a></p>
-                <br>
-                <br>
-                <form method="POST" enctype=multipart/form-data>
-                        <input type="file" name="htmlfile" >
-                        <input type="submit" value="Transfer to flowchart">
-                </form>
-            </div>
-        </div>
     </div>
   </div>
+  <div class="centered">
+        <div class = "content">
+         
+            <h1>CMT summary report visulization</h1>
+            <p>select your report file (for support: <a href="mailto:DLMatlCMTSupport@dow.com">DLMatlCMTSupport@dow.com)</a></p>
+            <br>
+            <br>
+            <form method="POST" enctype=multipart/form-data>
+                 
+                        <input type="file" name="htmlfile" value="">
+                      
+                    <input type="submit" value="Transfer to flowchart">
+            </form>
+        
+        </div>
     
-</div>
+  </div>
+    
+
 
 
 
