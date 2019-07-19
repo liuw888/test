@@ -1,4 +1,6 @@
 <HTML>
+ 
+
 
 <HEAD>
 
@@ -60,6 +62,11 @@
         font-size: 16px;
         border-radius: 10px;
     }
+    .bottom-right {
+        position: absolute;
+        bottom: 8px;
+        right: 16px;
+    }
     
     </style>
 
@@ -76,7 +83,6 @@
   </div>
   <div class="centered">
         <div class = "content">
-         
             <h1>CMT summary report visulization</h1>
             <p>select your report file (for support: <a href="mailto:DLMatlCMTSupport@dow.com">DLMatlCMTSupport@dow.com)</a></p>
             <br>
@@ -87,15 +93,20 @@
                       
                     <input type="submit" value="Transfer to flowchart">
             </form>
-        
         </div>
-    
   </div>
-    
+  <div id="result1" class="bottom-right"> </div>
+    <script>
 
+        if (localStorage.pagecount){
+        localStorage.pagecount=Number(localStorage.pagecount)+1;
+        }
+        else{
+        localStorage.pagecount=1;
+        }
+        document.getElementById("result1").innerHTML=localStorage.pagecount;
 
-
-
+    </script>
 </BODY>
 
 </HTML>

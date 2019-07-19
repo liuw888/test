@@ -9,6 +9,7 @@ import datetime
 
 app = Flask(__name__)        
 
+visit =0
 @app.route('/')
 def homepage():
     return 'Welcome to the homepage'
@@ -20,8 +21,7 @@ def test():
 
 @app.route('/run', methods=['POST','GET'])
 def run():
-    if request.method == 'POST':
-        
+    if request.method == 'POST':        
         #upload and read file
         file = request.files['htmlfile']
         filename = secure_filename(file.filename)
@@ -267,6 +267,7 @@ def run():
         return render_template("index2.html",tablecontent=res)
 
     return render_template("index.html")
+
 
 
 def constructTable(res,bcolor, marker,img, task, peopleName, dateDay,j):
